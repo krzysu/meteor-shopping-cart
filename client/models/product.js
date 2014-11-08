@@ -2,13 +2,21 @@
 Products = new Mongo.Collection(null);
 
 // bootstrap data
-window.productsCollection.forEach(function(item, index) {
+Products.bootstrap = function() {
+  HTTP.call("GET", "products.json", function(error, response) {
 
-  // init state properties
-  item.inCart = false;
+    if(!error) {
+      var products = response.data;
 
-  //
-  Products.insert(item);
-})
+      Session.set('currency', products[0].currency);
 
-Session.set('currency', window.productsCollection[0].currency);
+      products.forEach(function(item, index) {
+        // init state properties
+        item.inCart = false;
+
+        Products.insert(item);
+      });
+    }
+  });
+};
+
