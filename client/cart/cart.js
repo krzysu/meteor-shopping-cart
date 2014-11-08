@@ -1,16 +1,22 @@
 
 Template.cart.helpers({
+
   items: function() {
-    console.log(Cart.find());
     return Cart.find();
   },
 
   cartTotal: function() {
-    return 0;
+    var total = 0;
+
+    Cart.find().map(function(item) {
+      total += item.price;
+    });
+
+    return total;
   },
 
   cartCurrency: function() {
-    return 'EUR';
+    return Session.get('currency');
   }
 
 });

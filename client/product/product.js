@@ -1,21 +1,21 @@
 Template.product.events({
-  'click button': function () {
-    console.log('this', this);
-    console.log(Cart.insert(this));
+
+  'click button': function(event, template) {
+
+    Products.update(template.data._id, {
+      $set: {inCart: true}
+    });
+
+    Cart.insert(template.data);
   }
+
 });
 
 
 Template.product.helpers({
+
   data: function() {
     return this;
-  },
-
-  state: function() {
-    var state = {
-      added: false
-    }
-
-    return state;
   }
+
 });

@@ -3,11 +3,11 @@
   <div class="thumbnail">
     <img src={{data.image}} alt="product image" />
     <div class="caption clearfix">
-      <h3><a href={{data.url}}>{{data.name}}</a></h3>
+      <h3><a href={{data.url}} target="_blank">{{data.name}}</a></h3>
       <div class="product__price">{{data.price}} {{data.currency}}</div>
       <div class="product__button-wrap">
-        <button class="btn {{#if state.added}}'btn-danger'{{else}}btn-primary{{/if}}">
-          {{#if state.added}}
+        <button class="btn {{#if data.inCart}}btn-danger{{else}}btn-primary{{/if}}">
+          {{#if data.inCart}}
             Remove
           {{else}}
             Add to cart
