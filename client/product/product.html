@@ -1,0 +1,16 @@
+<template name="product">
+
+  <div class="thumbnail">
+    <img src={{data.image}} alt="product image" />
+    <div class="caption clearfix">
+      <h3><a href={{data.url}}>{{data.name}}</a></h3>
+      <div class="product__price">{{data.price}} {{data.currency}}</div>
+      <div class="product__button-wrap">
+        <button class="button {{this.state.added}}">
+          Add to cart
+        </button>
+      </div>
+    </div>
+  </div>
+
+</template>
