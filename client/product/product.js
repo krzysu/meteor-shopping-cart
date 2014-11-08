@@ -1,6 +1,7 @@
 Template.product.events({
   'click button': function () {
     console.log('this', this);
+    console.log(Cart.insert(this));
   }
 });
 
