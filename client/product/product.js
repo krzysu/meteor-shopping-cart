@@ -2,11 +2,25 @@ Template.product.events({
 
   'click button': function(event, template) {
 
-    Products.update(template.data._id, {
-      $set: {inCart: true}
-    });
+    var id = template.data._id;
 
-    Cart.insert(template.data);
+    if(Products.findOne(id).inCart) {
+      // remove
+      Products.update(id, {
+        $set: {inCart: false}
+      });
+
+      Cart.remove(id);
+    }
+    else {
+      // add
+      Products.update(id, {
+        $set: {inCart: true}
+      });
+
+      Cart.insert(template.data);
+    }
+
   }
 
 });
