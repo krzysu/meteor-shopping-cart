@@ -1,13 +1,20 @@
-// Template.hello.events({
-//     'click button': function () {
-//       // increment the counter when button is clicked
-//       Session.set("counter", Session.get("counter") + 1);
-//     }
-//   });
+Template.product.events({
+  'click button': function () {
+    console.log('this', this);
+  }
+});
 
 
 Template.product.helpers({
-  data: function () {
+  data: function() {
     return this;
+  },
+
+  state: function() {
+    var state = {
+      added: false
+    }
+
+    return state;
   }
 });

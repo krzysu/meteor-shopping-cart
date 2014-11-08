@@ -6,8 +6,12 @@
       <h3><a href={{data.url}}>{{data.name}}</a></h3>
       <div class="product__price">{{data.price}} {{data.currency}}</div>
       <div class="product__button-wrap">
-        <button class="button {{this.state.added}}">
-          Add to cart
+        <button class="btn {{#if state.added}}'btn-danger'{{else}}btn-primary{{/if}}">
+          {{#if state.added}}
+            Remove
+          {{else}}
+            Add to cart
+          {{/if}}
         </button>
       </div>
     </div>
